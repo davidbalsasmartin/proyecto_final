@@ -7,14 +7,20 @@ Proyecto desarrollado en Spring y Angular, con el objetivo de mejorar la rutina 
 ## Herramientas y tecnologías utilizadas.
 - Back:
 Spring boot 2.x
+
 Jwt
+
 Spring Security
+
 Java Mail
 
 - Front:
 Angular 7.x
+
 NGX Bootstrap
+
 Angular Material
+
 NG2Charts
 
 - BD:
