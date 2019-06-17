@@ -1,0 +1,50 @@
+.active {
+    background-color: transparent !important;
+    color: black!important;
+}
+
+ .carousel-control-next-icon {
+    margin-bottom: 87px!important;
+}
+
+.carousel-indicators {
+    bottom: -60px!important;
+}
+
+.ol {
+    bottom: -60px!important;
+}
+
+::ng-deep .carousel-indicators {
+    margin-bottom: -38px !important;
+}
+
+.miCarousel {
+    margin-bottom: 100px !important;
+    margin: auto;
+}
+
+@media (max-device-width: 1290px) {
+    ::ng-deep .carousel-control-prev-icon {
+        background: none !important;
+    }
+    ::ng-deep .carousel-control-next-icon {
+        background: none !important;
+    }
+}
+
+@media screen and (min-width: 700px) and (max-width: 900px) {
+    .container {
+        max-width: 92% !important;
+    };
+}
+
+@media screen and (max-width: 700px) {
+    .container {
+        width: 96% !important;
+    };
+}
+
+::ng-deep .carousel-control-next, ::ng-deep .carousel-control-prev {
+    width: 36px;
+}

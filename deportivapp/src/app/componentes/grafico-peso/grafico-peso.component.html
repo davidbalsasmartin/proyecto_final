@@ -1,0 +1,37 @@
+<div class="contieneGrafico">
+  <div clas="">
+    <canvas class="miGraf" baseChart
+                [datasets]="lineChartData"
+                [labels]="lineChartLabels"
+                [options]="lineChartOptions"
+                [colors]="lineChartColors"
+                [legend]="false"
+                [chartType]="lineChartType"
+                [plugins]="lineChartPlugins"></canvas>
+    </div>
+
+<div>
+<form [formGroup]="pesoForm" (ngSubmit)="guardaPeso()">
+    <div class="form-group">
+        <label for="peso">peso</label>
+        <input type="number" formControlName="peso" class="form-control"/>
+        <div *ngIf="submitted && pesoForm.controls.peso.errors" class="invalid-feedback">
+                <div *ngIf="pesoForm.controls.peso.errors.required">Este campo es requerido.</div>
+                <div *ngIf="pesoForm.controls.peso.errors.min">Mínimo 40.</div>
+                <div *ngIf="pesoForm.controls.peso.errors.max">Máximo 140.</div>
+            </div>
+    </div>
+    <div *ngIf="errors">
+    <div  *ngFor="let error of errors" class="alert alert-danger mt-3">
+        {{ error }}
+    </div>
+    <div  *ngFor="let good of goods" class="alert alert-light mt-3">
+        {{ good }}
+    </div>
+</div>
+        <button class="btn btn-primary">
+            guardar
+        </button>
+</form>
+</div>
+</div>

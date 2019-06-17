@@ -1,0 +1,57 @@
+.chart {
+    width: 80%;
+}
+
+.grid-container {
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 180px 500px;
+    grid-template-areas: "t-uno t-dos"
+                        "grid-uno grid-dos";
+  }
+ 
+  .grid-uno {
+    grid-area: grid-uno;
+  }
+
+  .grid-dos {
+    grid-area: grid-dos;
+  }
+
+  .t-uno {
+    grid-area: t-uno;
+  }
+
+  .t-dos {
+    grid-area: t-dos;
+  }
+
+  .indent {
+    align-self: center;
+    text-indent: 10%;
+  }
+
+  .top {
+      margin-top: 200px;
+  }
+
+  @media (max-device-width: 1300px) {
+    .grid-container {
+        margin: 0 auto;
+        grid-template-columns: 76%;
+        grid-template-rows: 140px 400px 140px 400px;
+        grid-template-areas: "t-uno"
+                            "grid-uno"
+                            "t-dos"
+                            "grid-dos";
+        justify-content: center;                        
+      }
+      .top {
+        margin-top: 80px;
+    }
+
+    .chart {
+        width: 90%;
+    }
+  }

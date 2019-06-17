@@ -1,0 +1,27 @@
+img:not(.png) {
+  height: 52%;
+}
+
+.contieneSVG {
+  margin: 5% auto;
+  text-align: center;
+  width: 100%;
+}
+/*
+@media (max-device-width: 500px) {
+  img:not(.png) {
+    height: 40%;
+  }
+}
+
+@media (max-device-width: 400px) and (min-device-height: 750px) {
+  img:not(.png) {
+    height: 26%;
+  }
+}
+
+@media (max-device-width: 500px) {
+  img:not(.png) {
+    height: 40%;
+  }
+}*/

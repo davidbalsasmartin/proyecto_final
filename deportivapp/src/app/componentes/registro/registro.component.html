@@ -1,0 +1,143 @@
+<div class="fondo">
+  <div class="container">
+    <h3 class="mb-4">Registrarse</h3>
+    <form [formGroup]="regForm" (ngSubmit)="onRegister()" fxLayout="column" fxLayoutGap="20px">
+      <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px">
+      <div fxFlex>
+        <label for="nombre">Nombre</label>
+        <input type="text" formControlName="nombre" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.nombre.errors }" />
+        <div *ngIf="submitted && f.nombre.errors" class="invalid-feedback">
+            <div *ngIf="f.nombre.errors.required">Este campo es requerido.</div>
+            <div *ngIf="f.nombre.errors.minlength">Mínimo 3 caracteres.</div>
+            <div *ngIf="f.nombre.errors.maxlength">Máximo 20 caracteres.</div>
+        </div>
+      </div>
+      <div fxFlex>
+        <label for="email">Email</label>
+        <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+            <div *ngIf="f.email.errors.required">Este campo es requerido.</div>
+            <div *ngIf="f.email.errors.minlength">Mínimo 8 caracteres.</div>
+            <div *ngIf="f.email.errors.email">Debe ser un email válido.</div>
+            <div *ngIf="f.email.errors.maxlength">Máximo 40 caracteres.</div>
+        </div>
+    </div>
+  </div>
+  <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px">
+    <div fxFlex>
+        <label for="contrasena">Contraseña</label>
+        <input type="password" formControlName="contrasena" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.contrasena.errors }" />
+        <div *ngIf="submitted && f.contrasena.errors" class="invalid-feedback">
+            <div *ngIf="f.contrasena.errors.required">Este campo es requerido.</div>
+            <div *ngIf="f.contrasena.errors.minlength">Mínimo 6 caracteres.</div>
+            <div *ngIf="f.contrasena.errors.maxlength">max 24 caracteres.</div>
+        </div>
+    </div>
+    <div fxFlex>
+        <label for="numeroDias">Nº días disponible a la semana.</label>
+        <input type="number" formControlName="numeroDias" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.numeroDias.errors }" />
+        <div *ngIf="submitted && f.numeroDias.errors" class="invalid-feedback">
+            <div *ngIf="f.numeroDias.errors.required">Este campo es requerido.</div>
+            <div *ngIf="f.numeroDias.errors.min">Mínimo 3.</div>
+            <div *ngIf="f.numeroDias.errors.max">Máximo 6.</div>
+        </div>
+      </div>
+  </div>
+  <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px">
+      <div fxFlex>
+          <label for="peso">Peso</label>
+          <input type="number" formControlName="peso" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.peso.errors }" />
+          <div *ngIf="submitted && f.peso.errors" class="invalid-feedback">
+              <div *ngIf="f.peso.errors.required">Este campo es requerido.</div>
+              <div *ngIf="f.peso.errors.min">Mínimo 40.</div>
+              <div *ngIf="f.peso.errors.max">Máximo 160.</div>
+          </div>
+      </div>
+        <div fxFlex>
+            <label for="altura">Altura (cm)</label>
+            <input type="number" formControlName="altura" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.altura.errors }" />
+            <div *ngIf="submitted && f.altura.errors" class="invalid-feedback">
+                <div *ngIf="f.altura.errors.required">Este campo es requerido.</div>
+                <div *ngIf="f.altura.errors.min">Mínimo 140.</div>
+                <div *ngIf="f.altura.errors.max">Máximo 230.</div>
+            </div>
+        </div>
+      </div>
+  <div fxLayout="row" fxLayout.lt-lg="column" fxLayoutGap="20px">
+    <div fxLayout="row" fxLayoutGap="20px" fxLayout.lt-sm="column">
+    <div fxFlex>
+    <mat-form-field>
+        <mat-label>Meta</mat-label>
+        <mat-select formControlName="campoMeta" required>
+          <mat-option>--</mat-option>
+          <mat-option *ngFor="let meta of metas" [value]="meta">
+            {{meta.name | titlecase}}
+          </mat-option>
+        </mat-select>
+        <div *ngIf="submitted && f.campoMeta.errors" class="invalid-feedback">required</div>
+    </mat-form-field>
+  </div>
+  <div fxFlex>
+      <mat-form-field>
+          <input matInput formControlName="fecha" [min]="minDate" [max]="maxDate" [matDatepicker]="picker" placeholder="Fecha de nacimiento.">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>
+        </mat-form-field>
+    </div>
+  </div>
+  <div fxLayout="row" fxLayoutGap="20px" fxLayout.lt-sm="column">
+    <div fxFlex>
+    <mat-form-field>
+        <mat-label>Sexo</mat-label>
+        <mat-select formControlName="campoSexo">
+          <mat-option>--</mat-option>
+          <mat-option *ngFor="let sexo of sexos" [value]="sexo">
+              {{sexo.name}}
+            </mat-option>
+        </mat-select>
+        <div *ngIf="submitted && f.campoSexo.errors" class="invalid-feedback">required</div>
+      </mat-form-field>
+    </div>
+    <div fxFlex>
+      <mat-form-field>
+          <mat-label>Actividad no incluida</mat-label>
+          <mat-select formControlName="campoActividad">
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let actividad of actividades" [value]="actividad">
+              {{actividad.name}}
+            </mat-option>
+          </mat-select>
+          <div *ngIf="submitted && f.campoActividad.errors" class="invalid-feedback">required</div>
+      </mat-form-field>
+    </div>
+  </div>
+      <div fxFlex>
+          <label for="grasa">% Grasa</label>
+          <input type="number" formControlName="grasa" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.grasa.errors }" />
+          <div *ngIf="submitted && f.grasa.errors" class="invalid-feedback">
+              <div *ngIf="f.grasa.errors.required">Este campo es requerido.</div>
+              <div *ngIf="f.grasa.errors.min">Mínimo 5</div>
+              <div *ngIf="f.grasa.errors.max">Máximo 70</div>
+          </div>
+      </div>
+    </div>
+
+    <img class="imgRegistro" src="{{ f.campoSexo.value?.name === 'Hombre' && 'assets/images/grasa_hombre.png' || 'assets/images/grasa_mujer.png' }}">
+      
+          <div *ngIf="submitted && isRegFail">
+            <div  *ngFor="let error of errors" class="alert alert-danger mt-3"> {{ error }} </div>
+          </div>
+          <div *ngIf="registered">
+            <div class="alert alert-light mt-3"> Gracias por registrarte, por favor mira el email para la confirmación. </div>
+          </div>
+
+          <div fxLayout.lt-md="column" fxLayoutGap="20px">
+            <button [disabled]="loading" type="submit" class="btn btn-primary mb-3">
+                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+              Crear Cuenta
+            </button>
+            <button routerLink="/login" type="button" class="btn btn-primary mb-3"> Login</button>
+          </div>
+    </form>
+  </div>
+</div>

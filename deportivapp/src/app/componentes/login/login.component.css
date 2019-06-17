@@ -1,0 +1,15 @@
+  .miLogin {
+    margin: 2% 26%;
+}
+
+@media screen and (min-width: 750px) and (max-width: 1000px) {
+    .miLogin {
+        margin: 2% 18%;
+    }
+}
+
+@media screen and (max-width: 749px) {
+    .miLogin {
+        margin: 2% 12% !important;
+    }
+}

@@ -1,0 +1,15 @@
+<form [formGroup]="searchForm" class="miBusca" (ngSubmit)="busqueda()">
+    <mat-form-field class="container">
+
+      <!-- ADD AN INPUT BOX OF TYPE TEXT AND LINK IT TO THE AUTO COMPLETE PANEL. -->
+      <input type="text" placeholder="Busca rutinas públicas..." formControlName="searchTerm"
+          matInput [matAutocomplete]="auto">  
+
+      <!-- CREATE AUTO COMPLETE PANEL WITH OPTIONS. -->
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let rutinaNombre of rutinasNombres" [value]="rutinaNombre.nombre">
+          {{ rutinaNombre.nombre }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+</form>

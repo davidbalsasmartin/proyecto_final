@@ -1,0 +1,94 @@
+<form [formGroup]="form" (ngSubmit)="onCreate()">
+  <div>
+    <label for="nombre">Nombre *</label>
+    <input type="text" formControlName="nombre" class="form-control" />
+    <div *ngIf="submitted && this.form.controls.nombre.errors" class="mi-invalid">
+      <div *ngIf="this.form.controls.nombre.errors.required">Este campo es requerido.</div>
+      <div *ngIf="this.form.controls.nombre.errors.minlength">Mínimo 4 caracteres.</div>
+      <div *ngIf="this.form.controls.nombre.errors.maxlength">Máximo 30 caracteres.</div>
+    </div>
+  </div>
+    <label for="descripcion">Descripcion</label>
+    <input type="text" formControlName="descripcion" class="form-control"/>
+    <div *ngIf="submitted && this.form.controls.descripcion.errors" class="mi-invalid">
+      <div *ngIf="this.form.controls.descripcion.errors.maxlength">Máximo 120 caracteres.</div>
+    </div>
+  <mat-form-field>
+    <mat-label>Tipo</mat-label>
+    <mat-select formControlName="tipo" required>
+      <mat-option>--</mat-option>
+      <mat-option *ngFor="let miTipo of misTipos" [value]="miTipo.name">
+        {{miTipo.name | titlecase}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <div></div>
+  <mat-form-field>
+    <mat-label>Descripción de los días</mat-label>
+    <mat-select (selectionChange)="onChange()" formControlName="descripcionDias" required>
+      <mat-option>--</mat-option>
+      <mat-option *ngFor="let miDesc of misDescDias" [value]="miDesc.name">
+        {{miDesc.name | uppercase}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <div *ngIf="!this.form.controls.descripcionDias.errors" formArrayName="dias">
+    <div *ngFor="let X of form['controls'].dias['controls']; let ix=index">
+      <h3 class="amarillo center"> DIA: {{ misDias[ix].name }} </h3>
+      <div formGroupName="{{ix}}" class="dias">
+        <div formArrayName="diaEjercicios">
+          <div *ngFor="let Y of X['controls'].diaEjercicios['controls']; let iy=index">
+            <div formGroupName="{{iy}}" class="diaEjercicios grid-container">
+              <div class="grid-ejer dleft">
+              <mat-form-field>
+                <mat-label>Ejercicios</mat-label>
+                <mat-select formControlName="ejercicio" required>
+                  <mat-option>--</mat-option>
+                  <mat-option *ngFor="let ej of misEjercicios" [value]="ej">
+                    {{ej.nombre | uppercase}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="grid-ser">
+              <label for="series">Series *</label>
+              <input type="text" formControlName="series" class="form-control" />
+            </div>
+            <div *ngIf="submitted" class="mi-invalid ser-r">
+              <p>{{formErrors.dias[ix].diaEjercicios[iy].series}}</p>
+            </div>
+            <div class="grid-int">
+                <label for="intensidad">Intensidad *</label>
+                <input type="number" formControlName="intensidad" class="form-control" />
+              </div>
+              <div *ngIf="submitted" class="mi-invalid int-r">
+                  <p>{{formErrors.dias[ix].diaEjercicios[iy].intensidad}}</p>
+                </div>
+              <div class="grid-x"></div>
+              <div class="grid-des">
+                  <label for="descanso">Descanso *</label>
+                  <input type="number" formControlName="descanso" class="form-control" />
+                </div>
+                <div *ngIf="submitted" class="mi-invalid des-r">
+                  <p>{{formErrors.dias[ix].diaEjercicios[iy].descanso}}</p>
+                </div>
+            </div>
+          </div>
+          <input type="button" class="btn btn-primary" (click)="addY(ix)" value="Añadir ejercicio">
+          <input type="button" class="btn btn-warning" (click)="deleteY(ix)" value="Borrar ejercicio">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <div *ngIf="submitted && isCreateFail">
+      <div *ngFor="let error of errors" class="alert alert-danger mt-3">
+        {{ error }}
+      </div>
+    </div>
+    <button [disabled]="loading" class="btn btn-primary">
+      <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+      Crear
+    </button>
+  </div>
+</form>

@@ -1,0 +1,47 @@
+.imgRegistro {
+  margin: 0 auto; 
+  width: 64%;
+}
+
+@media (max-width: 956px) {
+    .imgRegistro {
+        width: 100%;
+    }
+}
+
+.fondo {
+    background-image: linear-gradient( rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.99)
+      ),url("../../../assets/images/ggg.jpg");
+    background-attachment: fixed;
+    background-position: center center;
+    /*solo anadido este: background-size: cover;*/
+    background-size: cover;
+    padding-top: 2%;
+    height: 100%;
+    margin:0px;
+  }
+
+  @media only screen and (min-height: 780px) and (max-height: 900px) and (min-width: 1281px) {
+    ::ng-deep body {
+    height: 100% !important;
+  }
+}
+
+@media only screen and (min-height: 835px) and (max-height: 900px) and (min-width: 961px) and (max-width: 992px) {
+    ::ng-deep body {
+    height: 100% !important;
+  }
+}
+
+@media only screen and (max-height: 900px) {
+    ::ng-deep body {
+    height: unset;
+  }
+}
+
+@media only screen and (max-width: 960px) {
+    ::ng-deep body {
+    height: unset;
+  }
+}
+

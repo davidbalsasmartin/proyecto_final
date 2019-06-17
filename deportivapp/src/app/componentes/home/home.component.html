@@ -1,0 +1,11 @@
+<div class="contieneSVG">
+  <img class="imagenPrincipal" src="../../../assets/images/gymade-blanco.svg">
+</div>
+
+<div *ngIf="role === 'USER'; else admin">
+  <app-home-user></app-home-user>
+</div>
+
+<ng-template #admin>
+  <app-home-admin></app-home-admin>
+</ng-template>

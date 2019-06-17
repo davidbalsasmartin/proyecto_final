@@ -1,0 +1,33 @@
+
+<div class="miLogin">
+<h5>Cambiar contraseña</h5>
+<form [formGroup]="contraForm" (ngSubmit)="cambio()">
+  <div class="form-group">
+      <label for="contrasena">Contraseña</label>
+      <input type="password" formControlName="contrasena" class="form-control" 
+      [ngClass]="{ 'is-invalid': submitted && contraForm.controls.contrasena.errors }" />
+      <div *ngIf="submitted && contraForm.controls.contrasena.errors" class="invalid-feedback">
+          <div *ngIf="contraForm.controls.contrasena.errors.required">Este campo es requerido.</div>
+          <div *ngIf="contraForm.controls.contrasena.errors.minlength">Mínimo 6 caracteres.</div>
+          <div *ngIf="contraForm.controls.contrasena.errors.maxlength">Máximo 24 caracteres.</div>
+      </div>
+  </div>
+      <div *ngIf="errors">
+              <div *ngFor="let error of errors" class="alert alert-danger mt-3">
+                  {{ error }}
+              </div>
+          </div>
+          <div *ngIf="goods">
+                  <div *ngFor="let good of goods" class="alert alert-light mt-3">
+                      {{ good }}
+                  </div>
+              </div>
+  <div>
+  
+      <button [disabled]="loading" class="btn btn-warning">
+          <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+          Cambiar
+      </button>
+  </div>
+</form>
+</div>

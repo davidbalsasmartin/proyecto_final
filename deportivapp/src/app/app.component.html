@@ -1,0 +1,39 @@
+<nav *ngIf="getURL() !== '/login' && getURL() !== '/registro' && getURL() !== '/info'" class="navbar navbar-expand-lg black navbar-dark bg-dark">
+  <a class="navbar-brand" routerLink="home">
+    GYMADE
+  </a>
+
+  <button class="navbar-toggler" type="button"
+          (click)="toggleNavbar()">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse"
+       [ngClass]="{ 'show': navbarOpen }" (clickPage)="closeNavbar()">
+    <ul class="navbar-nav mr-auto">
+
+      <div *ngIf="getRole()==='USER'">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="peso">Peso</a>
+      </li>
+    </div>
+
+      <li class="nav-item">
+          <a class="nav-link" routerLink="ejercicio">Ejercicios</a>
+      </li>
+
+      <li class="nav-item">
+          <a class="nav-link" routerLink="rutina">Rutinas</a>
+      </li>
+
+      <li class="nav-item">
+          <a class="nav-link" routerLink="usuario">Usuario</a>
+      </li>
+      
+    </ul>
+  </div>
+</nav>
+
+<router-outlet></router-outlet>
+
+

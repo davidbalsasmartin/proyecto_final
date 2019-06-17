@@ -1,0 +1,33 @@
+<h2 class="center">Ejercicios</h2>
+<div *ngIf="ejercicioPages?.content">
+  <mat-table [dataSource]="ejercicioPages.content">
+    <ng-container matColumnDef="nombre">
+      <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
+      <mat-cell *matCellDef="let row"><a class="blanco" [routerLink]="[row.idEjercicio]">
+        {{ (row.nombre.length>20)? (row.nombre | slice:0:20)+'...': (row.nombre) }}
+      </a></mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="requisito">
+      <mat-header-cell *matHeaderCellDef> Requisito </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.requisito}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="tipo">
+      <mat-header-cell *matHeaderCellDef> Tipo </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.tipo}} </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>
+
+<nav>
+<ul style="margin-left: 180px;margin-top:-10px;" class="pagination"  *ngIf="ejercicioPages?.content" >
+  <li *ngFor="let page of ' '.repeat(ejercicioPages.totalPages).split(''), let i = index " (click)="onSelect(i)" [class.active]="i === selectedPage" class="page-item"><a class="page-link">{{i}}</a></li>
+</ul>
+</nav>
+
+<div *ngIf="errors">
+  <div *ngFor="let error of errors" class="alert alert-danger mt-3">
+      {{ error }}
+  </div>
+</div>

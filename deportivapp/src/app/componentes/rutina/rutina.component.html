@@ -1,0 +1,129 @@
+<div *ngIf="!muestraPage; else muestra">
+  <div class="contieneB" *ngIf="rutinaPropia">
+    <button type="button" [disabled]="loading" (click)="asigna()" class="btn blanco f-gris">
+      Asignar
+    </button>
+    <button type="button" [disabled]="loading" (click)="modifica()" class="btn blanco f-gris">
+      Modificar
+    </button>
+    <button type="button" [disabled]="loading" (click)="publica()" class="btn blanco f-gris">
+      Publicar
+    </button>
+    <button type="button" [disabled]="loading" (click)="elimina()" class="btn blanco f-gris">
+      Eliminar
+    </button>
+  </div>
+  <div class="contieneB" *ngIf="!rutinaPropia && role==='USER'">
+    <button type="button" [disabled]="loading" (click)="copia()" class="btn blanco f-gris">
+      Copiar
+    </button>
+  </div>
+  <div class="contieneB" *ngIf="!rutinaPropia && role==='ADMIN' && creador !=='ADMIN'">
+    <button type="button" [disabled]="loading" (click)="elimina()" class="btn blanco f-gris">
+      Elimina
+    </button>
+    <button type="button" [disabled]="loading" (click)="banUsuario()" class="btn blanco f-gris">
+      Banea
+    </button>
+    <button type="button" [disabled]="loading" (click)="banUR()" class="btn blanco f-gris">
+      Banea y elimina
+    </button>
+    <button type="button" [disabled]="loading" (click)="oficial()" class="btn blanco f-gris">
+      Oficial
+    </button>
+  </div>
+  <div class="miDiv">
+    <div *ngIf="errors">
+      <div *ngFor="let error of errors" class="alert alert-danger mt-3">
+        {{ error }}
+      </div>
+    </div>
+      <div *ngIf="goods">
+        <div *ngFor="let good of goods" class="alert alert-light mt-3">
+          {{ good }}
+        </div>
+      </div>
+      <div *ngIf="showMod">
+        <app-modifica-rutina></app-modifica-rutina>
+      </div>
+      <div class="grid-container" *ngIf="miRutina">
+        <div class="nom center">
+          <h3>{{miRutina.nombre | uppercase}}</h3>
+        </div>
+        <div class="tip amarillo">Tipo:</div>
+        <div class="tip-r blanco l15">{{miRutina.tipo}}</div>
+        <div class="cop amarillo">Copias:</div>
+        <div class="cop-r blanco l15">{{miRutina?.copias}}</div>
+        <div class="desc amarillo">Descripcion:</div>
+        <div class="desc-r blanco l15"> {{miRutina?.descripcion}}</div>
+      </div>
+    </div>
+
+    <div class="miCarousel">
+      <carousel>
+        <div *ngFor="let array of miRutina?.dias; let i = index">
+          <slide>
+            <div class="text-center">
+              <h3 class="center">DÍA: {{dia[i]}}</h3>
+              <div class="lead">
+                <div>
+                  <mat-table [dataSource]="array.diaEjercicios">
+                    <ng-container matColumnDef="ejercicio">
+                      <mat-header-cell *matHeaderCellDef> Ejercicio </mat-header-cell>
+                      <mat-cell *matCellDef="let row"> 
+                          <a class="blanco" [routerLink]="['/ejercicio/', row.ejercicio.idEjercicio]">
+                            {{ (row.ejercicio.nombre>18)? (row.ejercicio.nombre | slice:0:18)+'...': (row.ejercicio.nombre) }}
+                          </a>
+                      </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="series">
+                      <mat-header-cell *matHeaderCellDef> Series </mat-header-cell>
+                      <mat-cell *matCellDef="let row"> {{row.series}} </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="descanso">
+                      <mat-header-cell *matHeaderCellDef> Descanso </mat-header-cell>
+                      <mat-cell *matCellDef="let row"> {{row.descanso}}s </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="intensidad">
+                      <mat-header-cell *matHeaderCellDef> Intensidad </mat-header-cell>
+                      <mat-cell *matCellDef="let row"> {{row.intensidad}}% </mat-cell>
+                    </ng-container>
+                    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                  </mat-table>
+                </div>
+              </div>
+            </div>
+          </slide>
+        </div>
+      </carousel>
+    </div>
+  </div>
+
+  <ng-template #muestra>
+    <tabset [justified]="true" *ngIf="role==='USER'">
+      <tab heading="Mis Rutinas" class="contenedor">
+        <mis-rutinas-page-app></mis-rutinas-page-app>
+      </tab>
+      <tab heading="Rutinas Publicas" class="contenedor">
+        <rutinas-publicas-page-app></rutinas-publicas-page-app>
+      </tab>
+      <tab heading="Rutinas Oficiales" class="contenedor">
+        <rutinas-oficiales-page-app></rutinas-oficiales-page-app>
+      </tab>
+      <tab heading="Crear" class="contenedor">
+        <app-crea-rutina></app-crea-rutina>
+      </tab>
+    </tabset>
+    <tabset [justified]="true" *ngIf="role==='ADMIN'">
+      <tab heading="Rutinas Públicas" class="contenedor">
+        <rutinas-publicas-page-app></rutinas-publicas-page-app>
+      </tab>
+      <tab heading="Rutinas Oficiales" class="contenedor">
+        <rutinas-oficiales-page-app></rutinas-oficiales-page-app>
+      </tab>
+      <tab heading="Crear" class="contenedor">
+        <app-crea-rutina></app-crea-rutina>
+      </tab>
+    </tabset>
+  </ng-template>

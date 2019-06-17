@@ -1,0 +1,16 @@
+.miContenedor {
+  width: 60%;
+  margin: 2% auto;
+}
+
+.separacion {
+  margin-top: 4%;
+}
+
+.top30 {
+  margin-top: 30px;
+}
+
+button {
+  width: 100%;
+}

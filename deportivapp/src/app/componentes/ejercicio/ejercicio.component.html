@@ -1,0 +1,22 @@
+<div class="miDiv" *ngIf="!muestraPage; else page">
+  <div class="grid-container" *ngIf="miEjercicio">
+    <div class="nom center"><h3>{{miEjercicio?.nombre | uppercase}}</h3></div>
+    <div class="req amarillo">Requisito:</div>
+    <div class="req-r blanco l15">{{miEjercicio?.requisito}}</div>
+    <div class="tip amarillo">Tipo:</div>
+    <div class="tip-r blanco l15">{{miEjercicio?.tipo}}</div>
+    <div class="mp amarillo">Músculos principales:</div>
+    <div class="mp-r blanco l15"> <div *ngFor="let muscP of miEjercicio.musculosPrinc;" style="display:inline;">•{{muscP.nombre}} &nbsp; </div></div>
+    <div class="ms amarillo">Músculos secundarios:</div>
+    <div class="ms-r blanco l15"><div *ngFor="let muscS of miEjercicio.musculosSec;">• {{muscS.nombre}}</div></div>
+  </div>
+  <div *ngIf="errors">
+    <div *ngFor="let error of errors" class="alert alert-danger mt-3">
+        {{ error }}
+    </div>
+</div>
+</div>
+
+<ng-template #page>
+      <ejercicios-page-app></ejercicios-page-app>
+  </ng-template>

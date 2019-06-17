@@ -1,0 +1,56 @@
+<h1 class="titulo">{{ rutinaPersDTO?.nombre | uppercase }}</h1>
+
+
+<h3 class="amarillo center m20">{{ diaSemana[activeSlideIndex] }}</h3>
+
+<div class="center kcal blanco" *ngIf="kcalDia[activeSlideIndex]">
+  <p>KCAL: {{ (kcalDia[activeSlideIndex]) }}</p>
+  PROTEINA: {{ ((kcalDia[activeSlideIndex] * macros.pro) / 4).toFixed() }} gr &nbsp;
+  HIDRATO: {{ ((kcalDia[activeSlideIndex] * macros.hidr) / 4).toFixed() }} gr &nbsp;
+  GRASA: {{ ((kcalDia[activeSlideIndex] * macros.gra) / 9).toFixed() }} gr
+</div>
+
+<div class="miCarousel">
+  <carousel [(activeSlide)]="activeSlideIndex">
+    <div *ngFor="let array of arrays;">
+      <slide>
+        <div class="text-center">
+          <div class="lead">
+            <div>
+              <mat-table [dataSource]="array">
+                <ng-container matColumnDef="ejercicio">
+                  <mat-header-cell *matHeaderCellDef> Ejercicio </mat-header-cell>
+                  <mat-cell *matCellDef="let row">
+                    <a class="blanco" [routerLink]="['/ejercicio/', row.ejercicio.idEjercicio]">
+                      {{ (row.ejercicio.nombre>18)? (row.ejercicio.nombre | slice:0:18)+'...': (row.ejercicio.nombre) }}
+                    </a>
+                  </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="series">
+                  <mat-header-cell *matHeaderCellDef> Series </mat-header-cell>
+                  <mat-cell *matCellDef="let row"> {{row.series}} </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="descanso">
+                  <mat-header-cell *matHeaderCellDef> Descanso </mat-header-cell>
+                  <mat-cell *matCellDef="let row"> {{row.descanso}}s </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="intensidad">
+                  <mat-header-cell *matHeaderCellDef> Intensidad </mat-header-cell>
+                  <mat-cell *matCellDef="let row"> {{row.intensidad}}% </mat-cell>
+                </ng-container>
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+              </mat-table>
+            </div>
+          </div>
+        </div>
+      </slide>
+    </div>
+  </carousel>
+</div>
+
+<div *ngIf="errors">
+  <div *ngFor="let error of errors" class="alert alert-danger mt-3">
+    {{ error }}
+  </div>
+</div>

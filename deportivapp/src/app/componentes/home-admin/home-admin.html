@@ -1,0 +1,26 @@
+<h2 class="amarillo center top">Estadísticas</h2>
+<div class="grid-container">
+  <h4 class="t-uno indent">Rutinas creadas en la última semana:</h4>
+<div class="chart grid-uno">
+  <canvas baseChart
+    [data]="pieChartData"
+    [labels]="pieChartLabels"
+    [chartType]="pieChartType"
+    [options]="pieChartOptions"
+    [colors]="pieChartColors"
+    [legend]="pieChartLegend">
+  </canvas>
+</div>
+
+<h4 class="t-dos indent">Total de usuarios:</h4>
+<div class="chart grid-dos">
+  <canvas baseChart
+    [data]="pieChartData2"
+    [labels]="pieChartLabels2"
+    [chartType]="pieChartType"
+    [options]="pieChartOptions"
+    [colors]="pieChartColors2"
+    [legend]="pieChartLegend">
+  </canvas>
+</div>
+</div>

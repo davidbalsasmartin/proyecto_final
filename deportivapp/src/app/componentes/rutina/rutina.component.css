@@ -1,0 +1,157 @@
+.miDiv {
+    margin: 0 auto;
+    width: 54%;
+    margin-top: 4%;
+}
+
+  .grid-container {
+    display: grid;
+    grid-template-columns: 25% 34% 23% 18%;
+    grid-template-rows: 40px 36px 56px;
+    grid-template-areas: "nom nom nom nom"
+                         "tip tip-r cop cop-r"
+                         "desc desc-r desc-r desc-r";
+  }
+ 
+  .nom {
+    grid-area: nom;
+  }
+
+  .tip {
+    grid-area: tip;
+  }
+  
+  .tip-r {
+    grid-area: tip-r;
+  }
+
+  .cop {
+    grid-area: cop;
+  }
+  
+  .cop-r {
+    grid-area: cop-r;
+  }
+
+  .desc {
+    grid-area: desc;
+  }
+  
+  .desc-r {
+    grid-area: desc-r;
+  }
+
+  .active {
+    background-color: transparent !important;
+    color: black!important;
+}
+
+ .carousel-control-next-icon {
+    margin-bottom: 87px!important;
+}
+
+.carousel-indicators {
+    bottom: -60px!important;
+}
+
+.ol {
+    bottom: -60px!important;
+}
+
+::ng-deep .carousel-indicators {
+    margin-bottom: -38px !important;
+}
+
+::ng-deep .carousel-control-prev {
+    left: 18px;
+}
+
+::neg-deep .carousel-control-next {
+    right: 51px !important;
+}
+
+.miCarousel {
+    margin-top: 2%;
+    width: 80%;
+}
+
+.mat-column-nombre {
+    width: 10%;
+  }
+
+.contenedor {
+    width: 80%;
+    margin: 2% auto;
+}
+
+@media (max-device-width: 1400px) {
+    .miCarousel {
+        width: 90% !important;
+    }
+    .miDiv {
+        width: 88%;
+    }
+}
+
+
+@media (max-device-width: 1290px) {
+    .mat-table {
+        padding-left: 26px;
+        padding-right: 26px;
+    }
+    ::ng-deep .carousel-control-prev-icon {
+        background: none !important;
+    }
+    ::ng-deep .carousel-control-next-icon {
+        background: none !important;
+    }
+}
+
+@media screen and (min-width: 700px) and (max-width: 900px) {
+    .container {
+        max-width: 92% !important;
+    };
+}
+
+@media screen and (max-width: 700px) {
+    .container {
+        width: 96% !important;
+    };
+}
+
+ ::ng-deep li > .active {
+    color: black !important;
+}
+
+.f-negro {
+    background-color: black;
+}
+
+.f-gris {
+    background-color: rgba(40, 40, 40, 0.78);
+}
+
+.btn:hover {
+    color: #dfa017 !important;
+}
+
+.btn:focus {
+    box-shadow: unset !important;
+}
+
+.contieneB {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+
+button {
+    flex-basis: 0;
+    flex-grow: 1;
+    text-align: center;
+}

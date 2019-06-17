@@ -1,0 +1,48 @@
+
+<div class="miLogin">
+<h5>Modificar preferencias </h5>
+<form [formGroup]="modForm" (ngSubmit)="modifica()">
+  <div class="form-group">
+    <div>
+        <mat-form-field>
+          <mat-label>Meta</mat-label>
+            <mat-select formControlName="campoMeta" required>
+              <mat-option>--</mat-option>
+              <mat-option *ngFor="let meta of metas" [value]="meta">
+                {{meta.name | titlecase}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div>
+        <label for="numeroDias">Nº días disponible a la semana.</label>
+            <input type="number" formControlName="numeroDias" class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && modForm.controls.numeroDias.errors }" />
+            <div *ngIf="submitted && modForm.controls.numeroDias.errors" class="invalid-feedback">
+              <div *ngIf="modForm.controls.numeroDias.errors.required">Este campo es requerido.</div>
+              <div *ngIf="modForm.controls.numeroDias.errors.min">Mínimo 3.</div>
+              <div *ngIf="modForm.controls.numeroDias.errors.max">Máximo 6.</div>
+            </div>
+          </div>
+        </div>
+        <div>
+  </div>
+      <div *ngIf="errors">
+              <div *ngFor="let error of errors" class="alert alert-danger mt-3">
+                  {{ error }}
+              </div>
+          </div>
+          <div *ngIf="goods">
+                  <div *ngFor="let good of goods" class="alert alert-light mt-3">
+                      {{ good }}
+                  </div>
+              </div>
+  <div>
+  
+      <button [disabled]="loading" class="btn btn-primary">
+          <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+          Actualizar
+      </button>
+  </div>
+</form>
+</div>

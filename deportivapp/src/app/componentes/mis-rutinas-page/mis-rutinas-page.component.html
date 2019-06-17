@@ -1,0 +1,36 @@
+<div *ngIf="rutinaPages?.content">
+    <mat-table [dataSource]="rutinaPages.content">
+      <ng-container matColumnDef="nombre">
+        <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
+        <mat-cell *matCellDef="let row"><a class="blanco" [routerLink]="[row.idRutina]">
+          {{ (row.nombre.length>20)? (row.nombre | slice:0:20)+'...': (row.nombre) }}
+        </a></mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="tipo">
+        <mat-header-cell *matHeaderCellDef> Tipo </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.tipo}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="descripcion">
+        <mat-header-cell *matHeaderCellDef> Descripcion dias </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.descripcionDias}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="copias">
+        <mat-header-cell *matHeaderCellDef> Copias </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.copias}} </mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  </div>
+
+<nav aria-label="...">
+<ul style="margin-left: 180px;margin-top:-10px;" class="pagination"  *ngIf="rutinaPages?.content" >
+  <li *ngFor="let page of ' '.repeat(rutinaPages.totalPages).split(''), let i = index " (click)="onSelect(i)" [class.active]="i === selectedPage" class="page-item"><a class="page-link">{{i}}</a></li>
+</ul>
+</nav>
+
+<div *ngIf="errors">
+  <div *ngFor="let error of errors" class="alert alert-danger mt-3">
+      {{ error }}
+  </div>
+</div>

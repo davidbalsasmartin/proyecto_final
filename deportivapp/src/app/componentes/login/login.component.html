@@ -1,0 +1,50 @@
+<div>
+    <div class="miLogin">
+<h3>Iniciar Sesión</h3>
+<form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+            <div *ngIf="f.email.errors.required">Este campo es requerido.</div>
+            <div *ngIf="f.email.errors.minlength">Mínimo 8 caracteres.</div>
+            <div *ngIf="f.email.errors.email">Debe ser un email válido.</div>
+            <div *ngIf="f.email.errors.maxlength">Máximo 40 caracteres.</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="contrasena">Contraseña</label>
+        <input type="password" formControlName="contrasena" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.contrasena.errors }" />
+        <div *ngIf="submitted && f.contrasena.errors" class="invalid-feedback">
+            <div *ngIf="f.contrasena.errors.required">Este campo es requerido.</div>
+            <div *ngIf="f.contrasena.errors.minlength">Mínimo 6 caracteres.</div>
+            <div *ngIf="f.contrasena.errors.maxlength">Máximo 24 caracteres.</div>
+        </div>
+    </div>
+        <div *ngIf="errors">
+                <div *ngFor="let error of errors" class="alert alert-danger mt-3">
+                    {{ error }}
+                </div>
+            </div>
+            <div *ngIf="goods">
+                    <div *ngFor="let good of goods" class="alert alert-light mt-3">
+                        {{ good }}
+                    </div>
+                </div>
+    <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px">
+    
+        <button [disabled]="loading" class="btn btn-primary" fxFlex>
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            Login
+        </button>
+        
+        <button [disabled]="loadingContra" type="button" fxFlex (click)="olvido()" class="btn btn-primary">
+            <span *ngIf="loadingContra" class="spinner-border spinner-border-sm mr-1"></span>
+            Contraseña olvidada
+        </button>
+
+        <button fxFlex routerLink="/registro" class="btn btn-primary">Crear cuenta</button>
+    </div>
+</form>
+</div>
+</div>

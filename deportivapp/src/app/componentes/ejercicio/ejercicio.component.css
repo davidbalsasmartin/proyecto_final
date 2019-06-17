@@ -1,0 +1,78 @@
+.miDiv {
+    margin: 0 auto;
+    width: 45%;
+    margin-top: 8%;
+}
+
+  .grid-container {
+    display: grid;
+    grid-template-columns: 24% 33% 19% 24%;
+    grid-template-rows: 40px 36px 106px 106px;
+    grid-template-areas: "nom nom nom nom"
+                         "req req-r tip tip-r"
+                         "mp mp-r mp-r mp-r"
+                         "ms ms-r ms-r ms-r";
+  }
+
+  @media (min-device-width: 680px) and (max-device-width: 1300px) {
+    .miDiv {
+      width: 88%;
+    }
+  }
+
+  @media (max-device-width: 680px) {
+    .grid-container {
+      display: grid;
+      grid-template-columns: 40% 60%;
+      grid-template-rows: 49px 40px 40px 114px 114px;
+      grid-template-areas: "nom nom"
+                           "req req-r"
+                           "tip tip-r"
+                           "mp mp-r"
+                           "ms ms-r";
+    }
+
+    .miDiv {
+      width: 78%;
+    }
+  }
+  
+  .nom {
+    grid-area: nom;
+  }
+
+  .req {
+    grid-area: req;
+  }
+  
+  .req-r {
+    grid-area: req-r;
+  }
+
+  .tip {
+    grid-area: tip;
+  }
+  
+  .tip-r {
+    grid-area: tip-r;
+  }
+
+  .mp {
+    grid-area: mp;
+  }
+  
+  .mp-r {
+    grid-area: mp-r;
+  }
+
+  .ms {
+    grid-area: ms;
+  }
+  
+  .ms-r {
+    grid-area: ms-r;
+  }
+ 
+  ::ng-deep li > .active {
+    color: black !important;
+}

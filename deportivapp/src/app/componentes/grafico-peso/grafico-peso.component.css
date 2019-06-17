@@ -1,0 +1,35 @@
+.miGraf {
+    height: 10% !important;
+    width: 60% !important;
+    margin: 0 auto;
+}
+
+.contieneGrafico {
+    margin-top: 4%;
+}
+
+form {
+    width: 60%;
+    margin: 3% auto;
+}
+
+.invalid-feedback {
+    display: inline !important;
+}
+
+@media (max-device-width: 1120px) {
+    button {
+        width: 100%;
+    }
+
+    .miGraf {
+        height: 20% !important;
+        width: 80% !important;
+    }
+
+    form {
+        width: 80%;
+        margin: 3% auto;
+    }
+
+}

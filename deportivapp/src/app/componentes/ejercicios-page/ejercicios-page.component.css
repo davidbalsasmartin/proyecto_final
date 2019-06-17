@@ -1,0 +1,20 @@
+@media (min-device-width: 1250px) {
+    .mat-table {
+        padding-left: 12%;
+        padding-right: 12%;
+    }
+}
+
+@media (max-device-height: 800px) {
+    .mat-table {
+        margin-top: 0 !important;
+    }
+}
+
+.pagination {
+    margin-left: 14% !important;
+}
+
+.mat-table {
+    margin-top: 1%;
+}

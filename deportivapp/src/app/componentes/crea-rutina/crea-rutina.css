@@ -1,0 +1,96 @@
+.dias, .diaEjercicios, p{
+    margin: 10px;
+   }
+   
+   input{
+     margin: 10px;
+   }
+   
+   input, p{
+     margin-top: 0px;
+   }
+   
+   .grid-container {
+    border: 1px solid rgba(255, 255, 255, 0.698) !important;
+    border-radius: 2%;
+    display: grid;
+    grid-template-columns: 22% 24% 24% 24%;
+    grid-template-rows: 100px 50px;
+    grid-template-areas: "ejer int ser des"
+                         "grid-x int-r ser-r des-r";
+    grid-column-gap: 1%;
+}
+ 
+  .grid-ejer {
+    grid-area: ejer;
+  }
+
+  .grid-x {
+    grid-area: grid-x;
+  }
+
+  .grid-int {
+    grid-area: int;
+  }
+
+  .grid-ser {
+    grid-area: ser;
+  }
+
+  .grid-des {
+    grid-area: des;
+  }
+
+  .des-r {
+    grid-area: des-r;
+  }
+
+  .int-r {
+    grid-area: int-r;
+  }
+
+  .ser-r {
+    grid-area: ser-r;
+  }
+
+  form {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .mi-invalid {
+    color: #dc3545;
+  }
+
+  .dleft {
+    padding-left: 12px;
+  }
+
+  .mat-form-field {
+      display: inline !important;
+  }
+
+  @media (max-device-width:1420px) and (min-device-width:800px) {
+    .grid-container {
+      grid-template-columns: 49% 48%;
+      grid-template-rows: 100px 50px 100px 50px;
+      grid-template-areas: "ejer int"
+                           "grid-x int-r"
+                           "ser des"
+                           "ser-r des-r";
+  }
+  }
+
+  @media (max-device-width:800px) {
+    .grid-container {
+      grid-template-columns: 96%;
+      grid-template-rows: 100px 100px 50px 100px 50px 100px 50px;
+      grid-template-areas: "ejer"
+                           "int"
+                           "int-r"
+                           "ser"
+                           "ser-r"
+                           "des"
+                           "des-r";
+  }
+  }
