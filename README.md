@@ -55,6 +55,7 @@ Sección con distintos tipos de archivos: url + /info
 ### Sección administrador:
 
 Usuario:    admin@gmail.com
+
 Contraseña: administrador
 
 ### Algunas capturas:
