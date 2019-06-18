@@ -50,6 +50,29 @@ Como BD se ha utilizado Postgresql, haciendo uso de PGAdmin4 para poder visualiz
 
 ## Demostración de funcionamiento de la aplicación.
 
+Sección con distintos tipos de archivos: url + /info
+
+### Sección administrador:
+
+Usuario:    admin@gmail.com
+Contraseña: administrador
+
+### Algunas capturas:
+
+<img src="img/home.png" width="420">
+
+<img src="img/user.png" width="420">
+
+<img src="img/admin.png" width="420">
+
+<img src="img/oficiales.png" width="420">
+
+<img src="img/peso.png" width="420">
+
+Proyecto spring boot:
+
 https://gymadeback.herokuapp.com/
+
+Proyecto finalizado:
 
 https://gymadefront.herokuapp.com/
