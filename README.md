@@ -59,15 +59,15 @@ Contraseña: administrador
 
 ### Algunas capturas:
 
-<img src="img/home.png" width="420">
+<img src="img/home.PNG" width="420">
 
-<img src="img/user.png" width="420">
+<img src="img/user.PNG" width="420">
 
-<img src="img/admin.png" width="420">
+<img src="img/admin.PNG" width="420">
 
-<img src="img/oficiales.png" width="420">
+<img src="img/oficiales.PNG" width="420">
 
-<img src="img/peso.png" width="420">
+<img src="img/peso.PNG" width="420">
 
 Proyecto spring boot:
 
